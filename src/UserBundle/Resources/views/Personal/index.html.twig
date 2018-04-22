@@ -1,0 +1,134 @@
+{#{{ dump() }}#}
+
+{#
+ajax充值api '{{ path('user_personal_recharge') }}' post方式 参数vip_number#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}会员中心{% endblock %}
+
+{% block style %}
+    <style>
+        .baseinfo{
+            width:100%;
+            text-align: center;
+        }
+        .baseinfo div{
+            padding:16px 0;
+        }
+        .baseinfo img{
+            width:90px;
+            height:90px;
+            border-radius: 50%;
+            border:1px solid #000;
+            vertical-align: bottom;
+            margin-right:30px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {#{{ dump() }}#}
+    <seection class="baseinfo">
+        <div>
+            <img src="{{ user.avatar }}"/>
+            <span class="username">{{ user. name}}</span>
+        </div>
+    </seection>
+    <div class="weui-grids">
+        <span  class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                积分：{{ user.points }}
+            </p>
+        </span>
+        <span  class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                优惠券：{{ coupon }}
+            </p>
+        </span>
+    </div>
+    <div class="weui-grids">
+        <span  class="weui-grid js_grid recharges">
+            <p class="weui-grid__label">
+                充值
+            </p>
+        </span>
+        <a href="{{ path('user_personal_consumption') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                消费记录
+            </p>
+        </a>
+        <a href="{{ path('user_personal_points') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                我的积分
+            </p>
+        </a>
+        <a href="{{ path('user_personal_coupon') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                我的优惠券
+            </p>
+        </a>
+        <a href="{{ path('user_personal_store') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                适用门店
+            </p>
+        </a>
+        <a href="" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                二维码
+            </p>
+        </a>
+        <a href="{{ path('user_personal_info') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                个人信息
+            </p>
+        </a>
+        <a href="{{ path('user_personal_help') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                使用帮助
+            </p>
+        </a>
+        <a href="{{ path('user_personal_feedback') }}" class="weui-grid js_grid">
+            <p class="weui-grid__label">
+                期待和意见
+            </p>
+        </a>
+    </div>
+    <section class="alertrecharge hidden">
+        <p class="alerttitle">充值</p>
+        <input placeholder="请输入会员卡编号"/>
+        <p class="selectbtn">
+            <span class="cancel">取消</span>
+            <span class="sure">确定</span>
+        </p>
+    </section>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            //充值操作
+            $('.recharges').click(function () {
+                $('.alertrecharge').removeClass('hidden');
+                //取消充值
+                $('.cancel').click(function () {
+                    $('.alertrecharge').addClass('hidden');
+                });
+                //进行充值
+                $('.sure').click(function () {
+                    var vip_number = $('.alertrecharge').find('input').val();
+                 $.post("{{ path('user_personal_recharge') }}",{vip_number},function (data) {
+                        if(data.flag == 0){
+                            $('.alertrecharge').addClass('hidden');
+                            $.toast(data.msg);
+                        }else{
+                            $('.alertrecharge').addClass('hidden');
+                            $.toast(data.msg,'cancel');
+                        }
+                    });
+                });
+            });
+        });
+    </script>
+{% endblock %}
+

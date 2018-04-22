@@ -1,0 +1,24 @@
+
+{#
+{{dump()}}#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}会员等级说明{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block body %}
+    {{ dump() }}
+    <header>
+        会员等级说明
+    </header>
+    <section class="pic">
+        图片
+    </section>
+    <section class="maincontain">
+        <p>{{ vip.name }}</p>
+        <p>{{ vip.value }}</p>
+    </section>
+{% endblock %}

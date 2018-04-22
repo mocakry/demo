@@ -1,0 +1,210 @@
+######################################## index ###################################
+#### 登录
+admin_login:
+    path:     /login
+    defaults: { _controller: AdminBundle:Index:login }
+
+#### 忘记密码
+admin_forget_password:
+    path:     /forgetPassword
+    defaults: { _controller: AdminBundle:Index:forgetPassword }
+
+#### 退出
+admin_logout:
+    path:     /logout
+    defaults: { _controller: AdminBundle:Index:logout }
+
+#### 欢迎页
+admin_index:
+    path:     /
+    defaults: { _controller: AdminBundle:Index:index }
+
+#### 数据与统计
+admin_statistics:
+    path:     /statistics
+    defaults: { _controller: AdminBundle:Index:statistics }
+
+#### 后台设置可以设置生日次数
+admin_birthday:
+    path:     /birthday
+    defaults: { _controller: AdminBundle:Index:birthday }
+
+
+######################################## 会员管理 ###################################
+#### 会员管理
+admin_member:
+    path:     /memberList
+    defaults: { _controller: AdminBundle:Member:index }
+
+#### 会员分组管理
+admin_member_group:
+    path:     /memberGroup
+    defaults: { _controller: AdminBundle:Member:memberGroup }
+
+#### 分户分组编辑
+admin_member_group_edit:
+    path:     /memberGroupEdit/{id}
+    defaults: { _controller: AdminBundle:Member:memberGroupEdit}
+
+#### 用户分组删除
+admin_member_group_del:
+    path:     /memberGroupDel/{id}
+    defaults: { _controller: AdminBundle:Member:memberGroupDel }
+
+#### 设置用户分组
+admin_set_member_group:
+    path:     /setMemberGroup
+    defaults: { _controller: AdminBundle:Member:setMemberGroup }
+
+#### 赠送优惠券
+admin_give_coupon:
+    path:     /giveCoupon
+    defaults: { _controller: AdminBundle:Member:giveCoupon }
+
+#### 赠送积分
+admin_give_points:
+    path:     /givePoints
+    defaults: { _controller: AdminBundle:Member:givePoints }
+
+#### 会员管理 积分修改
+admin_member_change_points:
+    path:     /memberChangePoints
+    defaults: { _controller: AdminBundle:Member:changePoints }
+
+#### 会员管理 积分详情
+admin_member_points:
+    path:     /memberPoints/{id}
+    defaults: { _controller: AdminBundle:Member:points }
+
+#### 会员管理 优惠券详情
+admin_member_coupon:
+    path:     /memberCoupon/{id}
+    defaults: { _controller: AdminBundle:Member:coupon }
+
+######################################## 优惠券 ###################################
+#### 优惠券
+admin_coupon:
+    path:     /couponList
+    defaults: { _controller: AdminBundle:Coupon:index }
+
+#### 优惠券 添加或编辑
+admin_coupon_edit:
+    path:     /couponEdit/{id}
+    defaults: { _controller: AdminBundle:Coupon:edit }
+
+#### 优惠券 删除
+admin_coupon_del:
+    path:     /couponDel/{id}
+    defaults: { _controller: AdminBundle:Coupon:del }
+
+
+######################################## 实体卡 ###################################
+#### 实体卡
+admin_card:
+    path:     /cardList
+    defaults: { _controller: AdminBundle:Card:index }
+
+#### 实体卡 添加或编辑
+admin_card_edit:
+    path:     /cardEdit/{id}
+    defaults: { _controller: AdminBundle:Card:edit }
+
+#### 实体卡 的 子卡列表
+admin_card_sub:
+    path:     /cardSub/{id}
+    defaults: { _controller: AdminBundle:Card:subCard }
+
+#### 实体卡的导出
+admin_card_sub_export:
+    path:     /export
+    defaults: { _controller: AdminBundle:Card:export }
+
+
+######################################## 文章管理 ###################################
+#### 文章管理
+admin_article:
+    path:     /articleList
+    defaults: { _controller: AdminBundle:Article:index }
+
+#### 文章管理 添加或编辑
+admin_article_edit:
+    path:     /articleEdit/{id}
+    defaults: { _controller: AdminBundle:Article:edit }
+
+#### 文章管理 删除
+admin_article_del:
+    path:     /articleDel/{id}
+    defaults: { _controller: AdminBundle:Article:del }
+
+
+######################################## 期待与反馈 ###################################
+#### 期待与反馈
+admin_feedback:
+    path:     /feedback
+    defaults: { _controller: AdminBundle:Feedback:index }
+
+
+######################################## 管理员 ###################################
+#### 管理员管理
+admin_admin:
+    path:     /adminList
+    defaults: { _controller: AdminBundle:Admin:index }
+
+#### 管理员 添加或编辑
+admin_admin_edit:
+    path:     /adminEdit/{id}
+    defaults: { _controller: AdminBundle:Admin:edit }
+
+#### 管理员 删除
+admin_admin_del:
+    path:     /adminDel/{id}
+    defaults: { _controller: AdminBundle:Admin:del }
+
+#### 管理员 修改密码
+admin_admin_password:
+    path:     /adminPassword
+    defaults: { _controller: AdminBundle:Admin:password }
+
+
+######################################## 门店信息 ###################################
+#### 门店信息
+admin_all_store:
+    path:     /store
+    defaults: { _controller: AdminBundle:Store:index }
+
+#### 门店信息 添加或编辑
+admin_store_edit:
+    path:     /storeEdit/{id}
+    defaults: { _controller: AdminBundle:Store:storeEdit }
+
+#### 门店信息 删除
+admin_store_del:
+    path:     /storeDel/{id}
+    defaults: { _controller: AdminBundle:Store:del }
+
+
+######################################## 内置数据库 ###################################
+#### 超级管理员 添加
+admin_site_insert:
+    path:     /siteAdminInsert
+    defaults: { _controller: AdminBundle:Site:adminInsert }
+
+#### 会员等级说明 添加
+admin_site_vip_rank:
+    path:     /siteVipRankInsert
+    defaults: { _controller: AdminBundle:Site:vipRankInsert }
+
+#### 积分兑换商城 添加
+admin_site_points:
+    path:     /siteVipPoints
+    defaults: { _controller: AdminBundle:Site:siteVipPoints }
+
+#### 系统内置优惠券 三条 添加
+admin_site_coupon:
+    path:     /siteCoupon
+    defaults: { _controller: AdminBundle:Site:siteCoupon }
+
+#### 系统内置添加生日修改次数 添加
+admin_site_birthday:
+    path:     /siteBirthday
+    defaults: { _controller: AdminBundle:Site:siteBirthday }

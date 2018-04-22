@@ -1,0 +1,89 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    文章管理{% if id %}编辑{% else %}添加{% endif %}
+{% endblock %}
+
+{% block css %}
+    <style>
+        .about_us {
+            position: static;
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">文章管理--{% if id %}编辑{% else %}添加{% endif %}</a>
+                </div>
+                <div class="order-information">
+                    <form action="" method="post"  id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="">文章名称：</label>
+                            <input type="text" placeholder="请输入文章名称" name="name" class="banner-name" value="{% if id %}{{ articles.name }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">选择分类：</label>
+                            <select name="type" id="">
+                                <option value="1"{% if id and articles.type == 1 %}selected{% endif %}>使用帮助</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">文章内容：</label>
+                            <script id="container" name="value" type="text/plain">{% if id %}{{ articles.value | raw }}{% endif %}</script>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">序号：</label>
+                            <input type="text" placeholder="请输入序号" name="sort_order" class="banner-sort_order" value="{% if id %}{{ articles.sort_order }}{% endif %}">
+                            （序号越大，文章的顺序越靠前）
+                        </div>
+
+                        <span class="tip-error-login about_us">{{ error.content }}</span>
+                        <input type="button" value="保存" class="master_save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <!-- 配置文件 -->
+    <script type="text/javascript" src="{{ asset('bundles/admin/ueditor1_4_3-utf8-php/ueditor.config.js') }}?v=20170503"></script>
+    <!-- 编辑器源码文件 -->
+    <script type="text/javascript" src="{{ asset('bundles/admin/ueditor1_4_3-utf8-php/ueditor.all.js') }}?v=20170120"></script>
+    <!-- 实例化编辑器 -->
+    <script type="text/javascript">
+        var editor = UE.getEditor('container', {
+            'initialFrameHeight': 300
+        });
+    </script>
+
+    <script>
+        $(function () {
+            // 点击保存 添加
+            $('.master_save').click(function(){
+                var name = $.trim($('.banner-name').val());
+                var sort_order = $('.banner-sort_order').val();
+                // 验证 正整数
+                var cell = /^[0-9]*[1-9][0-9]*$/;
+                if (name == '') {
+                    alert("文章名称不能为空！");
+                    return false;
+                } else if (!cell.test(sort_order) && sort_order != '' && sort_order != 0) {
+                    alert("排序格式不正确！");
+                    return false;
+                } else {
+                    $('#form').submit();
+                }
+            })
+        })
+    </script>
+{% endblock %}

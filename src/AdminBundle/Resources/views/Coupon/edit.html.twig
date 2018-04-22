@@ -1,0 +1,105 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    优惠券{% if id %}编辑{% else %}添加{% endif %}
+{% endblock %}
+
+{% block css %}
+    <style>
+        .about_us {
+            position: static;
+            display: block;
+        }
+        .order-information input[type=text], .order-information select, .order-information input[type=password] {
+            width: 267px;
+            height: 45px;
+            line-height: 40px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">优惠券--{% if id %}编辑{% else %}添加{% endif %}</a>
+                </div>
+                <div class="order-information">
+                    <form action="" method="post"  id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="">优惠券类型：</label>
+                            <select name="type" id="select_type">
+                                <option value="1"{% if id and coupon.type == 1 %}selected{% endif %}>金额优惠券</option>
+                                <option value="2"{% if id and coupon.type == 2 %}selected{% endif %}>非金额优惠券</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">优惠券名称：</label>
+                            <input type="text" placeholder="请输入优惠券名称" name="name" class="edit-name" value="{% if id %}{{ coupon.name }}{% endif %}" >
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">优惠券金额：</label>
+                            <input type="text" name="amount" class="edit-money" placeholder="请输入优惠券金额" value="{% if id %}{{ coupon.amount }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">优惠券时长：</label>
+                            <input type="text" name="day" class="edit-date" placeholder="请输入时长" value="{% if id %}{{ coupon.day }}{% endif %}">天
+                        </div>
+
+                        <input type="button" value="保存" class="master_save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            // 选择优惠券类型
+            $('#select_type').change(function () {
+                var type = $(this).val();
+                if (type == 1) {
+                    $('.edit-money').parent('div.form-group').show();
+                } else {
+                    $('.edit-money').parent('div.form-group').hide();
+                }
+            })
+            // 点击保存 添加
+            $('.master_save').click(function(){
+                var edit_name = $.trim($('.edit-name').val());
+                var edit_money = $('.edit-money').val();
+                var edit_date = $('.edit-date').val();
+                var type = $('#select_type').val();
+
+                // 验证 正整数
+                var cell = /^[0-9]*[1-9][0-9]*$/;
+                var money =/^\d+(\.\d{1,2})?$/;
+
+                if (type == 1) {
+                    if (!money.test(edit_money) || edit_money == 0.00 ) {
+                        alert('优惠券金额格式不正确！');
+                        return false;
+                    }
+                } else {
+                    edit_money = 0;
+                }
+
+                if (edit_name.length==0 || edit_name.length > 10) {
+                    alert('优惠券名称字数请控制在10个字以内！');
+                    return false;
+                } else if (!cell.test(edit_date)) {
+                    alert('有效天数格式不正确！');
+                    return false;
+                } else {
+                    $('#form').submit();
+                }
+            })
+        })
+    </script>
+{% endblock %}

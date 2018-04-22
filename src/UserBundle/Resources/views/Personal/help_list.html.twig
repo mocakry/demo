@@ -1,0 +1,50 @@
+{#
+ajax使用帮助api '{{ path('user_personal_help_more') }}' get方式 参数page#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}使用帮助{% endblock %}
+
+{% block style %}
+    <style>
+        .oneinfo{
+            padding:12px;
+            cursor: pointer;
+            border-bottom: 1px solid #000;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+   {# {{ dump() }}#}
+    <header>
+        使用帮助
+    </header>
+    <div class="details">
+
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            $.get("{{ path('user_personal_help_more',{'page':'1'}) }}",function (data) {
+                var html ='';
+                for(var i = 0 ; i < data.length ; i ++){
+                    html += "<p class='oneinfo' data=";
+                    html += data[i].id;
+                    html += ">";
+                    html += data[i].name;
+                    html += "</p>";
+                }
+                $('.details').append(html);
+                $('.oneinfo').click(function () {
+                    console.log(1);
+                    var id = $(this).attr('data');
+                    location.href = "/demo/web/app_dev.php/personal/helpShow/" + id;
+                });
+            })
+
+        });
+    </script>
+{% endblock %}

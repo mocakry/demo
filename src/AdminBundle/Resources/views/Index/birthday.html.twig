@@ -1,0 +1,45 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}设置--修改生日次数{% endblock %}
+
+{% block css %}
+    <style>
+        .form-group {
+            margin-top: 50px;
+            font-size: 16px;
+            line-height: 2;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="welcome">
+        <form action="" method="post" class="form">
+            <div class="form-group">
+                <label for="">设置生日修改次数：</label>
+                <input type="text" name="value" placeholder="设置生日修改次数" class="code" value="{{ birthday }}">
+            </div>
+            <input type="button" value="保存" class="master_save">
+        </form>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            $('.master_save').click(function () {
+                var birthday = $('.code').val();
+
+                // 验证 正整数
+                var cell = /^[0-9]*[1-9][0-9]*$/;
+
+                if (!cell.test(birthday)) {
+                    alert('设置格式不对！')
+                    return false;
+                } else {
+                    $('.form').submit();
+                }
+            })
+        })
+    </script>
+{% endblock %}

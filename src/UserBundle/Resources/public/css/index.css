@@ -1,0 +1,1025 @@
+.wrap{
+	width:100%;
+	max-width:720px;
+    min-width:240px;
+    margin:auto;
+}
+/*去除ios机默认的text样式*/
+input[type=text]{
+	-webkit-appearance:none;
+	outline:none
+}
+/*会员中心部分*/
+/*上方用户信息*/
+.user{
+	overflow: hidden;
+    background-color:#fafafa;
+}
+.photo{
+	display: block;
+	margin:0 auto;
+	/*margin-top:15px; */
+	width:60px;
+	height:60px;
+	border-radius:30px;
+	overflow: hidden;
+}
+.head-sculpture{
+	display: block;
+	margin: auto;
+	width:100%;
+	height:100%;
+}
+.name{
+	display: block;
+	margin:0 auto;
+	margin-top: 2px;
+	width:30%;
+	height:25px;
+	text-align: center;
+	font-size: 18px;
+	font-family: "微软雅黑";
+}
+.integral-information{
+	width:90%;
+	height:40px;
+	margin:0 auto;
+	margin-top:20px;
+}
+.integral{
+	float:left;
+	width:47%;
+	height:100%;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	box-shadow:0px 0px 20px #eeeeef;
+	background-color: #fff;
+}
+.coupon{
+	float:right;
+	width:47%;
+	height:100%;
+	border-top-left-radius:5px;
+	border-top-right-radius:5px;
+	box-shadow:0px 0px 20px #eeeeef;
+	background-color: #fff;
+}
+.integral-left{
+	display: inline-block;
+	padding-left: 10%;
+	width:60%;
+	height:40px;
+	line-height: 40px;
+	font-size:14px;
+	font-family: "微软雅黑";
+	text-align: left;
+}
+.integral-right{
+	float:right;
+	padding-right:10%;
+	width:30%;
+	height:40px;
+	line-height: 40px;
+	font-size: 18px;
+	font-family: "微软雅黑";
+	text-align: right;
+}
+/*9个功能选项卡*/
+.content{
+	float:left;
+	width:100%;
+	padding-top: 12px;
+}
+.my-integral{
+	float:left;
+	margin-left: 5%;
+	width:30%;
+	height:110px;
+	border-right: 1px solid #f9f9fb; 
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/my-integral.png) no-repeat center 30%;
+    background-size: 40px 35px;*/
+    text-decoration: none;
+}
+.integral-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat 0px 0px;
+	background-size:186px 60px; 
+}
+.coupon-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat -37px 0px;
+	background-size:186px 60px; 
+}
+.QR-code-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat -77px 0px;
+	background-size:186px 60px; 
+}
+.recharge-icon{
+	margin:0 auto;
+	margin-top:26px; 	
+	width:25px;
+	height:26px;
+	background: url(../images/01_background.png) no-repeat -118px 3px;
+	background-size:186px 60px; 
+}
+.consuming-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat -162px 0px;
+	background-size:186px 60px; 
+}
+.shop-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat 0px -36px;
+	background-size:186px 60px; 
+}
+.advice-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat -38px -34px;
+	background-size:186px 60px; 
+}
+.information-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat -77px -36px;
+	background-size:186px 60px; 
+}
+.help-icon{
+	margin:0 auto;
+	margin-top:27px; 	
+	width:25px;
+	height:25px;
+	background: url(../images/01_background.png) no-repeat -119px -36px;
+	background-size:186px 60px; 
+}
+.my-coupon{
+	float:left;
+	width:30%;
+	height:110px;
+	border-right: 1px solid #f9f9fb; 
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/my-coupon.png) no-repeat center 30%;
+  	background-size: 35px 35px;*/
+    text-decoration: none;
+}
+.QR-code{
+	float:left;
+	width:30%;
+	height:110px;
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/QR-code.png) no-repeat center 30%;
+    background-size: 35px 35px;*/
+    text-decoration: none;
+}
+.recharge{
+	clear:both;
+	float:left;
+	margin-left: 5%;
+	width:30%;
+	height:110px;
+	border-right: 1px solid #f9f9fb; 
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/recharge.png) no-repeat center 30%;
+    background-size: 35px 35px;*/
+    text-decoration: none;
+}
+.consuming{
+	float:left;
+	width:30%;
+	height:110px;
+	border-right: 1px solid #f9f9fb; 
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/consuming.png) no-repeat center 30%;
+    background-size: 35px 35px;*/
+    text-decoration: none;
+}
+.shop{
+	float:left;
+	width:30%;
+	height:110px;
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/shop.png) no-repeat center 30%;
+    background-size: 35px 35px;*/
+    text-decoration: none;
+}
+.advice{
+	clear:both;
+	float:left;
+	margin-left: 5%;
+	width:30%;
+	height:110px;
+	border-right: 1px solid #f9f9fb; 
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;	
+/*    background: url(../images/advice.png) no-repeat center 30%;
+    background-size: 35px 35px;*/
+    text-decoration: none;
+}
+.my-information{
+	float:left;
+	width:30%;
+	height:110px;
+	border-right: 1px solid #f9f9fb; 
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+/*    background: url(../images/my-information.png) no-repeat center 30%;
+    background-size: 40px 35px;*/
+    text-decoration: none;
+}
+.help{
+	float:left;
+	width:30%;
+	height:110px;
+/*	background: url(../images/help.png) no-repeat center 30%;*/
+	border-bottom: 1px solid #f9f9fb;
+    box-sizing: border-box;
+    /*background-size: 35px 35px;*/
+    text-decoration: none;
+}	
+.action{
+	display: block;
+	margin:0 auto;
+	margin-top: 13px;
+	width:80px;
+	height:20px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color:#000;
+}
+/*隐藏部分*/
+/*蒙板*/
+.black{
+    position:fixed;   
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;               
+    display: none;  
+    opacity:0.5;
+    filter:alpha(opacity=50);  
+    background-color:#000;    
+    z-index:150;                  
+}
+/*充值弹窗*/
+.recharge-window{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.window-title{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	text-align: center;
+	color:#fff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color:#aac998;
+}
+.member-number{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	padding-left:4%;
+	width:80%;
+	height:40px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	line-height: 18px;
+	border:1px solid #efefef;
+	box-shadow:0px;
+	border-radius: 2px;
+}
+.cancel{
+	float:left;
+	margin-top: 30px;
+	margin-left: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#cfcfcf;
+}
+.confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+/*二维码弹窗*/
+.QR-code-window{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:238px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index: 151;
+	background-color: #fff;
+}
+.two-dimension-code{
+	display: block;
+	margin:0 auto;
+	margin-top: 25px;
+	width:75%;
+	max-width:145px;
+}
+
+
+
+/*个人信息页*/
+.head-photo{
+	height:75px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.information-head{
+	float:left;
+	margin-left: 12px;
+	height:100%;
+	line-height: 75px;
+	vertical-align: middle;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+.head-picture{
+	float: right;
+	margin-top: 18px;
+	margin-right: 15px;
+	width:40px;
+	height:40px;
+	border-radius: 20px;
+	overflow: hidden;
+}
+.photograph{
+	width:100%;
+	height:100%;
+}
+/*修改头像，点击头像部分，直接修改头像*/
+.photo-choose{
+	position: absolute;
+	top:0;
+	left:0;
+	min-width:240px;
+	width:100%;
+	height:75px;
+	opacity: 0;
+	z-index: 152;
+}
+.head-arrow-tip{
+	float:right;
+	margin-right: 12px;
+	line-height: 75px;
+	width:18px;
+	height:100%;
+	background:url(../images/arrow-tip.png) no-repeat left center;
+	background-size: 40%;
+}
+/*其余相同样式*/
+.nickname{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.member-name{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.sex{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.phone-number{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.birthday{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.QQ-number{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.postbox{
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.information-type{
+	float:left;
+	margin-left: 12px;
+	height:100%;
+	line-height: 45px;
+	vertical-align: middle;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+.information-text{
+	float: right;
+	margin-right: 15px;
+	height:100%;
+	line-height: 45px;
+	vertical-align: middle;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+.arrow-tip{
+	float:right;
+	margin-right: 12px;
+	width:18px;
+	height:100%;
+	background:url(../images/arrow-tip.png) no-repeat left center;
+	background-size: 40%;
+}
+/*隐藏部分*/
+/*灰色遮罩层*/
+.black{
+    position:fixed;   
+    top:0;
+    left:0;
+    width:100%;
+    height:100%;               
+    display: none;  
+    opacity:0.5;
+    filter:alpha(opacity=50);  
+    background-color:#000;    
+    z-index:150;                  
+}
+/*修改头像*/
+/*.change-head-photo{
+	position: absolute;
+	bottom: 0;
+	left:0;
+	width:100%;
+	min-width: 240px;
+	height:135px;
+	display: none;
+	background-color: #fff;
+	z-index: 151;
+}
+.camera{
+	position: absolute;
+	z-index: 10;
+	top:0;
+	left:5%;
+	width:90%;
+	height:45px;
+	display: inline-block;
+	overflow: hidden;
+	opacity: 0;
+	border-bottom: 1px solid #fbfbfb;
+}
+.camera-text{
+	margin:0 auto;
+	width:90%;
+	height:45px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	border-bottom: 1px solid #fbfbfb;
+}
+.album{
+	position: absolute;
+	z-index: 10;
+	top:45px;
+	left:5%;
+	display: inline-block;
+	overflow: hidden;
+	opacity: 0;	
+	width:90%;
+	height:45px;
+	border-bottom: 1px solid #fbfbfb;
+}
+.album-text{
+	margin:0 auto;
+	width:90%;
+	height:45px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	border-bottom: 1px solid #fbfbfb;
+}
+.photo-cancel{
+	position: absolute;
+	top:90px;
+	left:5%;
+	margin:0 auto;
+	width:90%;
+	height:45px;
+	line-height: 45px;
+	text-align: center;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color:#cbcbcb;
+}*/
+/*修改昵称*/
+.change-nickname{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.window-title{
+	width:100%;
+	height:40px;
+	line-height: 40px;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	text-align: center;
+	color:#fff;
+	border-top-left-radius: 10px;
+	border-top-right-radius: 10px;
+	background-color:#aac998;
+}
+.set-nickname{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	padding-left:4%;
+	width:80%;
+	height:40px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	line-height: 14px;
+	border:1px solid #efefef;
+	border-radius: 2px;
+}
+.cancel{
+	float:left;
+	margin-top: 30px;
+	margin-left: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#cfcfcf;
+}
+.nickname-confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+.nickname-confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+/*修改姓名*/
+.change-name{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.set-name{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	padding-left:4%;
+	width:80%;
+	height:40px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	line-height: 14px;
+	border:1px solid #efefef;
+	border-radius: 2px;
+}
+.name-confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+/*修改性别*/
+.change-sex{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.set-sex{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	width:75%;
+	height:40px;
+}
+.man{
+	float:left;
+	width:35%;
+	min-width: 40px;
+	height:100%;
+}
+.woman{
+	float:right;
+	width:35%;
+	min-width: 40px;
+	height:100%;
+}
+input[type="radio"] {
+  	width:100%;
+  	display: none;
+}
+label{
+	display: block;
+  	padding-left: 60%;
+  	height:40px;
+  	line-height: 40px;
+  	cursor: pointer;
+  	background:url(../images/unchoosed.png) no-repeat 20% center;
+  	font-size: 14px;
+  	font-family: "微软雅黑";
+  	background-size: 21px 21px;
+}
+label.checked {
+  	background:url(../images/choosed.png) no-repeat 20% center;
+  	background-size: 21px 21px;
+}
+.confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+/*修改手机号*/
+.change-phone-number{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.set-phone-number{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	padding-left:4%;
+	width:80%;
+	height:40px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	line-height: 14px;
+	border:1px solid #efefef;
+	border-radius: 2px;
+}
+.phone-number-confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+/*修改生日*/
+.change-birthday{
+	position: absolute;
+	bottom: 0;
+	left:0;
+	width:100%;
+	min-width: 240px;
+	height:320px;
+	display: none;
+	background-color: #fff;
+	z-index: 151;
+}
+.birthday-cancel{
+	float:left;
+	margin-left:15px;
+	width:30px;
+	height:45px;
+	line-height: 45px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color:#cbcbcb;
+}
+.birthday-confirm{
+	float:right;
+	margin-right:15px;
+	width:30px;
+	height:45px;
+	line-height: 45px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+}
+.birthday-title{
+	margin:0 auto;
+	width:90px;
+	height:45px;
+	text-align: center;
+	line-height: 45px;
+	font-size: 15px;
+	font-family: "微软雅黑";
+}
+/*修改QQ号*/
+.change-QQ-number{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.set-QQ-number{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	padding-left:4%;
+	width:80%;
+	height:40px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	line-height: 14px;
+	border:1px solid #efefef;
+	border-radius: 2px;
+}
+.QQ-number-confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+/*修改邮箱*/
+.change-postbox{
+	position: fixed;
+	top:110px;
+	left:18%;
+	margin:0 auto;
+	width:64%;
+	height:205px;
+	min-width: 120px;
+	border-radius: 10px;
+	display: none;
+	z-index:151;
+	background-color: #fff;
+}
+.set-postbox{
+	display: block;
+	margin:0 auto;
+	margin-top: 30px;
+	padding-left:4%;
+	width:80%;
+	height:40px;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	line-height: 14px;
+	border:1px solid #efefef;
+	border-radius: 2px;
+}
+.postbox-confirm{
+	float:right;
+	margin-top: 30px;
+	margin-right: 8%;
+	width:35%;
+	height:35px;
+	line-height: 35px;
+	border-radius: 5px;
+	color:#fff;
+	text-align: center;
+	font-size: 16px;
+	font-family: "微软雅黑";
+	background-color:#aac998;
+}
+
+
+
+/*01会员中心修改*/
+.member-logo{
+	margin-top: 15px;
+	width:100%;
+	height:17px;
+	background:url(../images/member-logo.png) no-repeat center;
+	background-size: 137px 17px;
+}
+.some-information{
+	margin-top: 23px;
+	width:100%;
+	height:60px;
+}
+.user-new{
+	overflow: hidden;
+	width:100%;
+	height:162px;
+	background:url(../images/member-bg.png) no-repeat center;
+	background-size: 100% 162px;
+}
+.information-left{
+	float:left;
+	margin-left: 3%;
+	width:31%;
+	height:100%;
+}
+.information-center{
+	float:left;
+	width:32%;
+}
+.information-right{
+	float:left;
+	margin-right: 3%;
+	width:31%;
+	height:100%;
+}
+.infoamation-number{
+	display: block;
+	margin-top: 12px;
+	width:100%;
+	height:16px;
+	line-height: 18px;
+	text-align: center;
+	font-size:20px;
+	font-family: "微软雅黑";
+	color:#393a3f;
+}
+.infoamation-text{
+	display: block;
+	margin-top: 9px;
+	text-align: center;
+	width:100%;
+	height:12px;
+	font-size:12px;
+	font-family: "微软雅黑";
+}
+.photo-new{
+	display: block;
+	margin:0 auto;
+	/*margin-top:15px; */
+	width:60px;
+	height:60px;
+	border-radius:30px;
+	overflow: hidden;
+}
+/*.bottom-img{
+	position: absolute;
+	bottom:0px;
+	width:100%;
+	height:76px;
+	max-width:720px;
+    min-width:240px;
+	background:url(../images/index-bottom-all.png) no-repeat top center;
+	background-size: 462px 71px;
+}*/
+/*根据屏幕高度不同，判断底部图片是定位到底部还是紧跟在前面内容后显示*/
+@media screen and (min-height: 579px) { 
+	.bottom-img{
+		position: absolute;
+		bottom:0px;
+		width:100%;
+		height:76px;
+		max-width:720px;
+	    min-width:240px;
+		/*background:url(../images/index-bottom-all.png) no-repeat top center;
+		background-size: 462px 71px;*/
+		background:url(../images/index-bottom.png) no-repeat top center;
+		background-size: 360px 76px;
+	}
+} 
+@media screen and (max-height: 579px) { 
+	.bottom-img{
+		float: left;
+		width:100%;
+		height:76px;
+		max-width:720px;
+	    min-width:240px;
+		/*background:url(../images/index-bottom-all.png) no-repeat top center;
+		background-size: 462px 71px;*/
+		background:url(../images/index-bottom.png) no-repeat top center;
+		background-size: 360px 76px;
+	}
+} 
+

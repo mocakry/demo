@@ -1,0 +1,5 @@
+parameters:
+    dir_upload: upload
+    page_num: 10
+
+

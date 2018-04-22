@@ -1,0 +1,9 @@
+#### 生成二维码
+base_qrcode:
+    path:     /qrcode/{user_id}/{coupon_number}
+    defaults: { _controller: BaseBundle:Base:qrCode }
+
+# 上传图片
+base_upload_image:
+    path:     /public/upload-image
+    defaults: { _controller: BaseBundle:Base:uploadImage }

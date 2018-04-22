@@ -1,0 +1,60 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    实体卡
+{% endblock %}
+
+{% block css %}
+    <style>
+        .console-index {
+            padding: 0;
+            border: 0;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content" >
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">实体卡</a>
+                </div>
+                <a href="{{ path('admin_card_edit', {id:0}) }}" class="add-btn">添加</a>
+                <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>实体卡名称</th>
+                        <th>等级</th>
+                        <th>数量</th>
+                        <th>包含优惠券种类</th>
+                        <th>包含优惠券数量</th>
+                    </tr>
+                    </thead>
+                    {% for item in card %}
+                        <tr class="gradeA">
+                            <td>
+                                <a href="{{ path('admin_card_sub', {id:item.card_id}) }}">{{ item.name }}</a>
+                            </td>
+                            <td>
+                                {% if item.rank == 1 %}
+                                    A级
+                                {% elseif item.rank == 2 %}
+                                    B级
+                                {% elseif item.rank == 3 %}
+                                    C级
+                                {% elseif item.rank == 4 %}
+                                    D级
+                                {% endif %}
+                            </td>
+                            <td>{{ item.number }}</td>
+                            <td>{{ item.coupon }}</td>
+                            <td>{{ item.coupon_number }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}

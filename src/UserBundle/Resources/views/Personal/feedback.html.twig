@@ -1,0 +1,22 @@
+{#
+form表单提交，参数value#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}期待与意见{% endblock %}
+
+{% block style %}
+    <style>
+        form{
+            margin-top:10px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <header>期待与意见</header>
+    <form action="" method="post">
+        <textarea name="value"></textarea>
+        <input type="submit"/>
+    </form>
+{% endblock %}

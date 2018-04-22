@@ -1,0 +1,41 @@
+{#
+form表单提交，参数phone
+<form action="">
+    手机号<input type="text" name="phone">
+    <input type="submit">
+</form>#}
+{#{{ dump() }}#}
+{% extends '@User/layout.html.twig' %}
+
+{% block title %}领取会员卡页面{% endblock %}
+
+{% block style %}
+    <style>
+        .vipcard{
+            width:80%;
+            margin:0 auto;
+            height:200px;
+            border:1px solid #000;
+            text-align: center;
+            font:50px/200px "";
+        }
+        button{
+            width:80%;
+            margin:10px 0  0 10%;
+            height:30px;
+            background:#0000ff;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="vipcard">
+        会员卡
+    </div>
+    <form action="" method="post">
+        手机号<input type="text" name="phone">
+        <input type="submit" value="提交" />
+    </form>
+
+{% endblock %}
+

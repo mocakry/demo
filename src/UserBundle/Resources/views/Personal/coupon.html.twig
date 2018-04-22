@@ -1,0 +1,87 @@
+{#
+ajax 我的优惠券列表api '{{path('user_personal_coupon_more')}}' get方式 参数page#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}我的优惠券{% endblock %}
+
+{% block style %}
+    <style>
+        .chosed{
+            border-bottom: 1px solid #000;
+            color:red;
+        }
+        .details{
+            margin-top:20px;s
+        }
+        .info{
+            background: #0a6aa1;
+            width:100%;
+            padding:12px 0;
+            margin-bottom: 5px;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <header>
+        我的优惠券
+    </header>
+    <section class="tab">
+        <span class="canuse chosed">待使用</span>
+        <span class="donotuse">已失效</span>
+    </section>
+    <div class="details">
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        function initdata() {
+            $.get("{{ path('user_personal_coupon_more',{'page':1}) }}",{'type':1},function (data) {
+                /*console.log(data);*/
+                $('.details').empty();
+                var html = "";
+                    for(var i = 0 ; i < data.msg.length ; i ++){
+                        html += '<div class="info"><p>';
+                        html += data.msg[i].coupon_name;
+                        html += '</p><p>金额为：';
+                        html += data.msg[i].amount;
+                        html +='</p><p>有效期至：';
+                        html += data.msg[i].end_date;
+                        html +='</p><p>会员卡编号：';
+                        html += data.msg[i].coupon_number;
+                        html += '</p></div>';
+                    }
+                    $('.details').append(html);
+            });
+        }
+       initdata();
+        //点击进行tab切换
+        $('.tab').on('click','span',function () {
+           $('.tab span').removeClass('chosed');
+           $(this).addClass('chosed');
+           if($(this).html() == '待使用'){
+               initdata();
+           }else{
+               $.get("{{ path('user_personal_coupon_more',{'page':1}) }}",{'type':2},function (data) {
+                   /*console.log(data);*/
+                   $('.details').empty();
+                   var html = "";
+                   for(var i = 0 ; i < data.msg.length ; i ++){
+                       html += '<div class="info"><p>';
+                       html += data.msg[i].coupon_name;
+                       html += '</p><p>金额为：';
+                       html += data.msg[i].amount;
+                       html +='</p><p>有效期至：';
+                       html += data.msg[i].end_date;
+                       html +='</p><p>会员卡编号：';
+                       html += data.msg[i].coupon_number;
+                       html += '</p></div>';
+                   }
+                   $('.details').append(html);
+               });
+           }
+        });
+    </script>
+{% endblock %}

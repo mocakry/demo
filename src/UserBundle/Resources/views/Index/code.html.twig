@@ -1,0 +1,25 @@
+{% extends 'UserBundle::layout.html.twig' %}
+
+{% block title %}关注公众号{% endblock %}
+
+{% block stylesheets %}
+    <style>
+        .wrap img {
+            display: block;
+            width: 80%;
+            margin: 20% auto 0;
+        }
+        .wrap p {
+            margin-top:15%;
+            font-size: 16px;
+            text-align: center;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    <div class="wrap">
+        <p>请识别二维码关注公众号</p>
+        <img src="{{ asset('code.jpg') }}" alt="">
+    </div>
+{% endblock %}

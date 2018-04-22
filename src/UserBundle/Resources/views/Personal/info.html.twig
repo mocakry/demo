@@ -1,0 +1,198 @@
+{#
+{{dump()}}
+ajax 个人信息修改api '{{path('user_personal_info_change', {type:2})}}' post方式
+
+type含义 type:1：头像 2：昵称 3：姓名 4:性别 5:手机号 6:生日 7:qq号 8:邮箱
+参数 nickname name sex phone birthday qq mail
+使用方法：路由后添加type值，
+type==1是，参数是navatar_update
+type==2是，参数是nickname
+type == 3，参数是name
+type == 4，参数是sex
+type == 5，参数是phone
+type == 6，参数是birthday
+type == 7，参数是qq
+type == 8，参数是mail#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}个人信息{% endblock %}
+
+{% block style %}
+    <style>
+        .avatar img{
+            width:50px;
+            height:50px;
+            border:1px solid #000;
+            border-radius:50%;
+        }
+        .alert{
+            width:80%;
+            margin:0 auto;
+            position: fixed;
+            top:25%;
+            background:#0a6aa1;
+            height:200px;
+            left:25px;
+        }
+        .alert input{
+            background: #0a6aa1;
+            border:0;
+            padding-left:4px;
+            font:16px/24px "";
+        }
+        .hidden{
+            display: none;
+        }
+        .base{
+            padding:12px ;
+        }
+        .alertitle{
+            text-align: center;
+            width:100%;
+            font:16px/24px "";
+        }
+        .btn{
+            width:100%;
+            display: flex;
+            justify-content: space-around;
+            font:16px/24px "";
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+    {{ dump() }}
+    <header>个人信息</header>
+    <div class="avatar">
+        <img src="{{ info.avatar }}"/>
+        <input   id="upload" type="file" />
+        <span class="avatarsub">提交</span>
+    </div>
+    <div class="nickname base" type="2">
+        昵称：{{ info.nickname }}
+    </div>
+    <div class="name base" type="3">
+        姓名：{{ info.name }}
+    </div>
+    <div class="sex base" type="4">
+        性别：{% if info.sex == 0 %}男{% else %}女{% endif %}
+    </div>
+    <div class="phone base " type="5">
+        手机号：{{ info.phone }}
+    </div>
+    <div class="birthday base" type="6">
+        生日：{{ info.birthday }}
+    </div>
+    <div class="qq base" type="7">
+        QQ号：{{ info.qq }}
+    </div>
+    <div class="mail base" type="8">
+    邮箱：{{ info.mail }}
+    </div>
+
+
+    <div class="alert hidden">
+        <div class="alertitle"></div>
+        <input  class="inputform"/>
+        <div class="btn">
+            <span class="cancel">取消</span>
+            <span class="ensure">确认</span>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        //头像提交
+        $('.avatarsub').click(function () {
+            var data = document.getElementById('upload');
+            var file = new FormData();
+            //console.log(data);
+            file.append('navatar_update', data.files[0]);
+            file.append('type', '1');
+            $.ajax({
+                url: "{{ path('user_personal_info_change') }}",
+                type: 'POST',
+                data: file,
+                processData: false,
+                contentType: false,
+                success:function (data) {
+                    console.log(data);
+                }
+            });
+        });
+        $('.base').click(function(){
+            var type = $(this).attr('type');
+            //console.log(type);
+            $('.alert').removeClass('hidden');
+            var data = $('.inputform').val();
+            switch (type){
+                case '2': {
+                    $('.alertitle').html('修改昵称');
+                    break;
+                };
+                case '3': {$('.alertitle').html('修改姓名');break;}
+                case '4': {$('.alertitle').html('修改性别');break;}
+                case '5': {$('.alertitle').html('修改手机号');break;}
+                case '6': {$('.alertitle').html('修改生日');break;}
+                case '7': {$('.alertitle').html('修改QQ号');break;}
+                case '8': {$('.alertitle').html('修改邮箱');break;}
+            }
+            $('.cancel').click(function () {
+                $('.alert').addClass('hidden');
+            });
+            $('.ensure').click(function () {
+                switch (type){
+                    case '2': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:2,nickname:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                        break;
+                    };
+                    case '3': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:3,name:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                        break;
+                    }
+                    case '4': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:4,sex:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                    }
+                    case '5': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:5,phone:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                         break;
+                    }
+                    case '6': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:6,birthday:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                        break;
+                    }
+                    case '7': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:7,qq:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                        break;
+                    }
+                    case '8': {
+                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:8,mail:data},function (data) {
+                            console.log(data);
+                            $('.alert').addClass('hidden');
+                        });
+                        break;
+                    }
+            });
+        });
+    </script>
+{% endblock %}

@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+
+    <title>{% block title %}摇叶{% endblock %}</title>
+    <link rel="shortcut icon" type="image/x-icon" href="{{ asset('favicon.ico') }}?v=201707121806" />
+
+    <link href="{{ asset('bundles/admin/css/bootstrap.min.css') }}?v=20170228" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/font-awesome/css/font-awesome.css') }}?v=20170228" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/plugins/toastr/toastr.min.css') }}?v=20170228" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/js/plugins/gritter/jquery.gritter.css') }}?v=20170228" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/animate.css') }}?v=20170228" rel="stylesheet">
+    <link href="{{ asset('bundles/admin/css/style.css') }}?v=20170510" rel="stylesheet">
+    <style>
+        body {
+            min-width: 1200px;
+            overflow: auto;
+        }
+        .head-information {
+            display: inline-block;
+            width: 350px;
+            height: 100%;
+        }
+        .head-information img {
+            float: left;
+            width: 50px;
+            height: 50px;
+            margin-top: 15px;
+            margin-left: 42px;
+            margin-right: 20px;
+        }
+        .head-information h2 {
+            padding: 0;
+            margin: 0;
+            color: #fff;
+            line-height: 80px;
+        }
+    </style>
+    {% block css %}{% endblock %}
+</head>
+
+<body>
+    <div id="wrapper">
+        <!-- 蒙版 弹框 -->
+        {% block box %}
+        <div class="mask"></div>
+        {% endblock %}
+
+        <!-- 头部 -->
+        {% block head %}
+        <div class="row">
+            <nav class="navbar navbar-static-top" role="navigation" style="background-color: #2f4050;margin-bottom: 0;height: 80px;">
+                <div class="head-information">
+                    <img src="{{ asset('bundles/admin/img/logo-index.png') }}?v=20170712" alt="">
+                    <h2>摇叶卡券后台系统</h2>
+                </div>
+                <ul class="nav navbar-top-links navbar-right " style="height: 80px; line-height: 38px;">
+                    <li>
+                        <a href="javascript:;">
+                            欢迎{{app.session.get('account')}}
+                        </a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_logout') }}">
+                            退出
+                        </a>
+                    </li>
+                </ul>
+
+            </nav>
+        </div>
+        {% endblock %}
+        
+        <!-- 导航栏 -->
+        {% block nav %}
+        <nav class="navbar-default navbar-static-side" role="navigation">
+            <div class="sidebar-collapse">
+                <ul class="nav metismenu" id="side-menu">
+                    <li>
+                        <a href="{{ path('admin_index') }}"><i class="fa fa-th-large"></i> <span class="nav-label">欢迎页</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_member_group') }}"><i class="fa fa-diamond"></i> <span class="nav-label">会员分组管理</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_member') }}"><i class="fa fa-table"></i> <span class="nav-label">会员管理</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_coupon') }}"><i class="fa fa-pie-chart"></i> <span class="nav-label">优惠券管理</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_card') }}"><i class="fa fa-edit"></i> <span class="nav-label">实体卡管理</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_article') }}"><i class="fa fa-envelope"></i> <span class="nav-label">文章管理</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_feedback') }}"><i class="fa fa-bar-chart-o"></i> <span class="nav-label">期待反馈</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_statistics') }}"><i class="fa fa-flask"></i> <span class="nav-label">数据与统计</span></a>
+                    </li>
+                    <li>
+                        <a href="{{ path('admin_birthday') }}"><i class="fa fa-edit"></i> <span class="nav-label">设置生日次数</span></a>
+                    </li>
+                    {% if app.session.get('power') == 0 %}
+                    <li>
+                        <a href="{{ path('admin_all_store') }}"><i class="fa fa-desktop"></i> <span class="nav-label">门店管理</span></a>
+                    </li>
+
+                    <li>
+                        <a href="{{ path('admin_admin') }}"><i class="fa fa-picture-o"></i> <span class="nav-label">管理员管理</span></a>
+                    </li>
+                    {% endif %}
+
+                    <li>
+                        <a href="{{ path('admin_admin_password') }}"><i class="fa fa-magic"></i> <span class="nav-label">修改密码</span></a>
+                    </li>
+
+                </ul>
+            </div>
+        </nav>
+        {% endblock %}
+        
+        <!-- 主体 -->
+        <div id="page-wrapper" class="gray-bg dashbard-1" style="min-width: 980px;">
+            <div class="row">
+                <div class="col-lg-12">
+                    <!-- 内容 -->
+                    <div class="wrapper wrapper-content">
+                        <!-- 可替换 -->
+                        {% block content %}
+                        内容
+                        {% endblock %}
+                    </div>
+                </div>
+            </div>
+            <!-- 底部 -->
+            {% block footer %}
+            <div class="footer">
+                <div>
+                    <strong>Copyright</strong> yayuanzi &copy; 2014-2017
+                </div>
+            </div>
+            {% endblock %}
+        </div>
+
+    </div>
+
+    <!-- Mainly scripts -->
+    <script src="{{ asset('bundles/admin/js/jquery-2.1.1.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/bootstrap.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/metisMenu/jquery.metisMenu.js') }}"></script>
+    {#<script src="{{ asset('bundles/admin/js/plugins/slimscroll/jquery.slimscroll.min.js') }}"></script>#}
+
+    <!-- Flot -->
+    <script src="{{ asset('bundles/admin/js/plugins/flot/jquery.flot.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/flot/jquery.flot.tooltip.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/flot/jquery.flot.spline.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/flot/jquery.flot.resize.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/plugins/flot/jquery.flot.pie.js') }}"></script>
+
+    <!-- Peity -->
+    <script src="{{ asset('bundles/admin/js/plugins/peity/jquery.peity.min.js') }}"></script>
+    <script src="{{ asset('bundles/admin/js/demo/peity-demo.js') }}"></script>
+    
+    <!-- Custom and plugin javascript -->
+    <script src="{{ asset('bundles/admin/js/inspinia.js') }}?v=201705271111"></script><!-- 控制导航栏 -->
+    <!-- <script src="{{ asset('bundles/admin/js/plugins/pace/pace.min.js') }}"></script> -->
+
+    <!-- jQuery UI -->
+    <script src="{{ asset('bundles/admin/js/plugins/jquery-ui/jquery-ui.min.js') }}"></script>
+
+    <!-- GITTER -->
+    <script src="{{ asset('bundles/admin/js/plugins/gritter/jquery.gritter.min.js') }}"></script>
+
+    <!-- Sparkline -->
+    <script src="{{ asset('bundles/admin/js/plugins/sparkline/jquery.sparkline.min.js') }}"></script>
+
+    <!-- Sparkline demo data  -->
+    <script src="{{ asset('bundles/admin/js/demo/sparkline-demo.js') }}"></script>
+
+    <!-- ChartJS-->
+    <script src="{{ asset('bundles/admin/js/plugins/chartJs/Chart.min.js') }}"></script>
+
+    <!-- Toastr -->
+    {#<script src="{{ asset('bundles/admin/js/plugins/toastr/toastr.min.js') }}"></script>#}
+
+    <script type="text/javascript">
+        var route = window.location.pathname;
+
+        if (route.indexOf('articleEdit') >= 0) {
+            route = '{{ path('admin_article') }}'
+        }
+        if (route.indexOf('adminEdit') >= 0) {
+            route = '{{ path('admin_admin') }}'
+        }
+        if (route.indexOf('couponEdit') >= 0) {
+            route = '{{ path('admin_coupon') }}'
+        }
+        if (route.indexOf('cardEdit') >= 0) {
+            route = '{{ path('admin_card') }}'
+        }
+        if (route.indexOf('cardSub') >= 0) {
+            route = '{{ path('admin_card') }}'
+        }
+        if (route.indexOf('memberPoints') >= 0 || route.indexOf('memberChangePoints') >= 0 || route.indexOf('memberCoupon') >= 0) {
+            route = '{{ path('admin_member') }}'
+        }
+        if (route.indexOf('storeEdit') >= 0) {
+            route = '{{ path('admin_all_store') }}'
+        }
+
+        // 导航栏高亮
+        var $selected = $('ul#side-menu li a[href="' + route + '"]');
+        $selected.parents('li').addClass('active');
+
+    </script>
+    {% block js %}
+    {% endblock %}
+
+</body>
+</html>

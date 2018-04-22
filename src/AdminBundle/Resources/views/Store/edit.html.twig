@@ -1,0 +1,118 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    门店管理{% if id %}编辑{% else %}添加{% endif %}
+{% endblock %}
+
+{% block css %}
+    <style>
+        .about_us {
+            position: static;
+            display: block;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">门店管理--{% if id %}编辑{% else %}添加{% endif %}</a>
+                </div>
+                <div class="order-information">
+                    <form action="" method="post"  id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="">门店名称：</label>
+                            <input type="text" placeholder="请输入门店名称" name="name" class="banner-name" value="{% if id %}{{ store.name }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">门店地址：</label>
+                            <input type="text" placeholder="请输入门店地址" name="address" class="banner-address" value="{% if id %}{{ store.address }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">营业时间：</label>
+                            <input type="text" placeholder="请输入营业时间" name="time" class="banner-time" value="{% if id %}{{ store.time }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">电话：</label>
+                            <input type="text" placeholder="请输入电话" name="phone" class="banner-phone" value="{% if id %}{{ store.phone }}{% endif %}">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="banner">门店图片：</label>
+                            <div class="image-preview" {% if id %} style="background: url({{ asset('upload/photo/') }}{{ store.photo }}); background-size: 100%;" {% endif %}></div>
+                            {% if id %}
+                                <img src="{{ asset('upload/avatar_update/') }}{{ store.photo }}" width="100" height="100"  alt="" class="banner-edit">
+                            {% endif %}
+                            <input type="file" name="photo" class="image-upload" value="添加图片" />
+                            <span class="banner-size">图片672*336</span>
+                        </div>
+
+                        <span class="tip-error-login about_us">{{ error.content }}</span>
+                        <input type="button" value="保存" class="master_save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <!-- 图片预览 -->
+    <script type="text/javascript" src="{{ asset('bundles/admin/js/jquery.uploadPreview.js') }}?v=201611213"></script>
+
+    <script>
+        $(document).ready(function() {
+            // 上传图片
+            $.uploadPreview({
+                input_field: ".image-upload",
+                preview_box: ".image-preview",
+                {% if id %}
+                back_image: "{{ asset('upload/avatar_update/') }}{{ store.photo }}",//背景图片路由
+                {% endif %}
+            });
+
+            // 点击保存 添加
+            $('.master_save').click(function(){
+                var name = $.trim($('.banner-name').val());
+                var address = $.trim($('.banner-address').val());
+                var time = $.trim($('.banner-time').val());
+                var phone = $.trim($('.banner-phone').val());
+                var img = $('.image-upload').val();
+                var cell = /^((0\d{2,3}-\d{7,8})|(1[35784]\d{9}))$/;
+                if (name == '') {
+                    alert("门店名称不能为空！");
+                    return false;
+                } else if (address == '') {
+                    alert("门店地址不能为空！");
+                    return false;
+                } else if (time == '') {
+                    alert("营业时间不能为空！");
+                    return false;
+                } else if (!(cell.test(phone))) {
+                    alert("电话格式不对");
+                    return false;
+                }
+                {% if id %}
+                {% else %}
+                else if (img == '') {
+                    alert("未上传图片！");
+                    return false;
+                }
+                {% endif %}
+                else {
+                    $('#form').submit();
+                }
+            })
+
+            // 点击上传附件时
+            $('.image-upload').click(function(){
+                $('.banner-edit').hide();
+            })
+        })
+    </script>
+{% endblock %}

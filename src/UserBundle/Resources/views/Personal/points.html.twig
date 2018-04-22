@@ -1,0 +1,88 @@
+{#
+ajax 升级会员api '{{path('user_personal_promotion_vip')}}' post方式 参数vip_points
+
+ajax 我的积分列表api '{{path('user_personal_points_more')}}' get方式 参数page#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}我的积分{% endblock %}
+
+{% block style %}
+    <style>
+        .point{
+            font:26px/78px "";
+            float: left;
+        }
+        .levelup{
+            float: right;
+            font:13px/39px "";
+        }
+        .levelup span{
+            display: inline-block;
+            width:70px;
+            text-align: center;
+            background-color: #0a6aa1;
+            cursor: pointer;
+        }
+        .allpoint{
+            overflow: hidden;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+   {# {{dump()}}#}
+    <header>我的积分<a href="{{ path('user_personal_vip') }}">《会员等级说明》</a></header>
+    <section class="allpoint">
+        <div class="point">
+            剩余积分：<span class="text-red">{{ points }}</span>
+        </div>
+        <div class="levelup">
+            <p>已达会员升级条件</p>
+            <p>立即<span class="leevelupbtn">升级会员</span></p>
+        </div>
+    </section>
+    <div class="detailinfo">
+        <table border="1">
+            <tr>
+                <td>积分额度</td>
+                <td>获得积分时间</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            $.get("{{ path('user_personal_points_more',{'page':1}) }}",function (data) {
+                var html = "";
+                for(var i = 0 ; i < data.msg.length ; i++){
+                    html += "<tr><td>";
+                    if(data.msg[i].point_type == 1){
+                        html += "+";
+                        html += data.msg[i].point_limit;
+                    }else{
+                        html += "-";
+                        html += data.msg[i].point_limit;
+                    }
+                    html += "</td><td>";
+                    html += data.msg[i].add_date;
+                    html += "</td></tr>";
+                }
+                $('table').append(html);
+            });
+
+            //升级会员
+            $('.leevelupbtn').click(function () {
+               $.post("{{ path('user_personal_promotion_vip') }}",{vip_points:{{ points }} },function (data) {
+                   if(data.flag == 0){
+                       $.toast(data.msg);
+                   }else{
+                       $.toast(data.msg,'cancel');
+                   }
+               });
+            });
+        });
+    </script>
+{% endblock %}

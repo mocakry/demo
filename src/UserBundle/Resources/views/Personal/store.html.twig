@@ -1,0 +1,38 @@
+{#
+{{dump()}}#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}适用门店{% endblock %}
+
+{% block style %}
+    <style>
+        .details{
+            margin-top:10px;
+        }
+        .intro{
+            text-align: right;
+        }
+        .info{
+            margin-bottom: 5px;
+            border:1px solid #000;
+        }
+    </style>
+{% endblock %}
+
+{% block body %}
+   {# {{ dump() }}#}
+    <header>
+        适用门店
+    </header>
+    <div class="details">
+        <p class="intro">仅展示离你最近的30家门店</p>
+        {% for item in store %}
+            <div class="info">
+                <p>店名：{{ item.name }}</p>
+                <p>地址：{{ item.address }}</p>
+                <p>联系电话：{{ item.phone }}</p>
+            </div>
+        {% endfor %}
+    </div>
+{% endblock %}

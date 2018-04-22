@@ -1,0 +1,49 @@
+{#
+ajax消费记录api '{{ path('user_personal_consumption_more') }}' get方式 参数page#}
+
+{#{{ dump() }}#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}消费记录{% endblock %}
+
+{% block style %}
+{% endblock %}
+
+{% block body %}
+    <header>
+        消费记录
+    </header>
+    <div class="detailinfo">
+        <table border="1">
+            <tr>
+                <td>消费商品名称</td>
+                <td>消费金额</td>
+                <td>消费时间</td>
+            </tr>
+        </table>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            $.get("{{ path('user_personal_consumption_more',{'page':1}) }}",function (data) {
+                console.log(data);
+                if(data.msg.length != 0){
+                    var html = "";
+                    for(var i = 0 ; i < data.msg.length ; i ++){
+                        html += '<tr><td>';
+                        html += data.msg[i].store_name;
+                        html += "</td><td>";
+                        html += data.msg[i].amount;
+                        html += "</td><td>";
+                        html += data.msg[i].add_date;
+                        html += "</td></tr>";
+                    }
+                    $('table').append(html);
+                }
+            });
+        });
+    </script>
+{% endblock %}

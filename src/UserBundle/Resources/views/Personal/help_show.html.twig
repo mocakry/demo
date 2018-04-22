@@ -1,0 +1,19 @@
+{#
+{{dump()}}#}
+
+{% extends  '@User/layout.html.twig' %}
+
+{% block title %}帮助详情{% endblock %}
+
+{% block style %}{% endblock %}
+
+{% block body %}
+    {{ dump() }}
+    <header>
+        {{ show.name }}
+    </header>
+    <section class="pic">
+            图片
+    </section>
+    {{ show.value }}
+{% endblock %}

@@ -1,0 +1,27 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>{% block title%}{% endblock %}</title>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/add.css') }}"/>
+    {#<link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/index.css') }}"/>#}
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/weui.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/jquery-weui.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/iosSelect.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/reset.css') }}"/>
+    <link rel="stylesheet" type="text/css" href="{{ asset('bundles/user/css/style.css') }}"/>
+    {% block style %}{% endblock %}
+</head>
+<body>
+    {% block body %}
+    {% endblock %}
+    <script src="{{ asset('bundles/user/js/jquery-2.1.4.min.js') }}"></script>
+    <script src="{{ asset('bundles/user/js/jquery-weui.min.js') }}"></script>
+    <script src="{{ asset('bundles/user/js/jquery.uploadPreview.js') }}"></script>
+    <script src="{{ asset('bundles/user/js/iscroll.js') }}"></script>
+    <script src="{{ asset('bundles/user/js/iosSelect.js') }}"></script>
+    {% block js %}{% endblock %}
+</body>
+</html>

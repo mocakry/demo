@@ -1,0 +1,193 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    实体卡{% if id %}编辑{% else %}添加{% endif %}
+{% endblock %}
+
+{% block css %}
+    <style>
+        .about_us {
+            position: static;
+            display: block;
+        }
+        .order-information input[type=text], .order-information select, .order-information input[type=password] {
+            width: 267px;
+            height: 45px;
+            line-height: 40px;
+        }
+        .controls {
+            display: inline-block;
+            margin-left: 5px;
+        }
+        .form-group ul {
+            padding: 5px 10px;
+            margin: 0;
+            min-width: 500px;
+            border: 1px solid #ddd;
+        }
+        ul.all-products {
+            height: 300px;
+            overflow-y: scroll;
+        }
+        .coupon-select {
+            float: left;
+        }
+        ul li.clearfix {
+            list-style: none;
+            line-height: 20px;
+        }
+        .pull-left {
+            float: left;
+        }
+        #allProducts label {
+            width: 100%;
+            font-weight: normal;
+        }
+        ul#selectedProducts li {
+            line-height: 40px;
+        }
+        ul#selectedProducts li input[type="text"] {
+            width: 36px;
+            height: 36px;
+            padding: 0;
+            text-align: center;
+            margin-left: 20px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">实体卡--{% if id %}编辑{% else %}添加{% endif %}</a>
+                </div>
+                <div class="order-information">
+                    <form action="" method="post"  id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="">实体卡名称：</label>
+                            <input type="text" placeholder="请输入实体卡名称" name="name" class="banner-name" {% if id %}readonly{% endif %}>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">等级：</label>
+                            <select name="rank" id="banner-rank" {% if id %}disabled{% endif %}>
+                                <option value="1">A级</option>
+                                <option value="2">B级</option>
+                                <option value="3">C级</option>
+                                <option value="4">D级</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">子卡数量：</label>
+                            <input type="text" placeholder="请输入子卡数量" name="number" class="banner-number" {% if id %}readonly{% endif %}>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="coupon-select">请选择关联的优惠券：</label>
+                            <div class="controls">
+                                <ul class="all-products" id="allProducts">
+                                    {% for item in coupon %}
+                                    <li class="clearfix" id="product-{{ item.id }}" data-id="{{ item.id }}">
+                                        <label class="pull-left" for="product-checked{{ item.id }}">
+                                            <input type="checkbox" name="product" id="product-checked{{ item.id }}">
+                                            <span class="coupon-name">{{ item.name }}</span>
+                                        </label>
+                                    </li>
+                                    {% endfor %}
+                                </ul>
+                            </div>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="" class="coupon-select">已选择的优惠券：</label>
+                            <div class="controls">
+                                <ul class="" id="selectedProducts">
+
+                                </ul>
+                            </div>
+                            <input type="hidden" name="coupon_arr" class="coupon-select-number">
+                        </div>
+
+                        {#<span class="tip-error-login about_us">{{ error.content }}</span>#}
+                        {% if id == 0 %}
+                        <input type="button" value="保存" class="master_save">
+                        {% endif %}
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            //选择优惠券
+            // 选择商品
+            $('#allProducts').on('click', 'li label input', function() {
+                var product_id = parseInt($(this).parents('li').data('id'));
+                if ($(this).is(':checked') == true) {
+                    var html = '';
+                    var product_name = $(this).siblings('.coupon-name').text();
+                    html += '<li class="clearfix" id="selected-' + product_id + '" data-id="' + product_id + '">';
+                    html +=     '<span class="pull-left">' + product_name + '</span>';
+                    html +=     '<i class="icon-remove pull-right"></i>';
+                    html +=     '<input type="text" class="pull-right coupon-number" value="1" data-id='+ product_id +' />';
+                    html += '</li>';
+                    $('#selectedProducts').append(html);
+                } else {
+                    $('#selected-' + product_id).remove();
+                }
+            });
+
+
+
+            // 点击保存 添加
+            $('.master_save').click(function(){
+
+
+                var coupon_arr = [];
+                $('.coupon-number').each(function () {
+                    var coupon_number = $(this).val();
+                    var coupon_id = $(this).data('id');
+                    if (coupon_number >= 9) {
+                        alert("每张优惠券赠送数量最多为8张");
+                        $(this).val('8');
+                        return false;
+                    }
+                    var coupon_id_number = coupon_id+':'+coupon_number;
+                    //转为数组
+                    coupon_arr.push(coupon_id_number);
+                });
+                var coupon_string = coupon_arr.join(',');
+                $('.coupon-select-number').val(coupon_string);
+
+
+                var name = $.trim($('.banner-name').val());
+                var number = $.trim($('.banner-number').val());
+                var coupon_select_number = $.trim($('.coupon-select-number').val());
+
+                // 验证 正整数
+                var cell = /^[0-9]*[1-9][0-9]*$/;
+
+                if (name == '') {
+                    alert("实体卡名称不能为空！");
+                    return false;
+                }
+                else if (!cell.test(number)) {
+                    alert('子卡数量请设置整数');
+                    return false;
+                } else if (coupon_select_number == '') {
+                    alert('请选择优惠券');
+                    return false;
+                }
+                else {
+                    $('#form').submit();
+                }
+            })
+        })
+    </script>
+{% endblock %}

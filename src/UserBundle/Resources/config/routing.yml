@@ -1,0 +1,101 @@
+######################################## index ###################################
+#### 领取会员卡
+user_index:
+    path:     /
+    defaults: { _controller: UserBundle:Index:index }
+
+#### 验证手机号
+user_index_phone:
+    path:     /phone
+    defaults: { _controller: UserBundle:Index:phone }
+
+#### 领取或者没有领取会员卡
+user_active_vip:
+    path:     /activeVip/{type}
+    defaults: { _controller: UserBundle:Index:cardEdit }
+
+######################################## 会员中心 ###################################
+#### 会员中心
+user_personal:
+    path:     /personal
+    defaults: { _controller: UserBundle:Personal:index }
+
+#### 充值
+user_personal_recharge:
+    path:     /personal/recharge
+    defaults: { _controller: UserBundle:Personal:recharge }
+
+#### 消费记录
+user_personal_consumption:
+    path:     /personal/consumption
+    defaults: { _controller: UserBundle:Personal:consumption }
+
+#### 消费记录 加载更多
+user_personal_consumption_more:
+    path:     /personal/consumptionMore
+    defaults: { _controller: UserBundle:Personal:consumptionMore }
+
+#### 我的积分
+user_personal_points:
+    path:     /personal/points
+    defaults: { _controller: UserBundle:Personal:points }
+
+##### 会员等级说明
+user_personal_vip:
+   path:     /personal/vip
+   defaults: { _controller: UserBundle:Personal:vip }
+
+#### 升级会员
+user_personal_promotion_vip:
+    path:     /personal/promotionVip
+    defaults: { _controller: UserBundle:Personal:promotionVip }
+
+#### 我的积分 加载更多
+user_personal_points_more:
+    path:     /personal/pointsMore
+    defaults: { _controller: UserBundle:Personal:pointsMore }
+
+#### 我的优惠券
+user_personal_coupon:
+    path:     /personal/coupon
+    defaults: { _controller: UserBundle:Personal:coupon }
+
+#### 我的优惠券 加载更多
+user_personal_coupon_more:
+    path:     /personal/couponMore
+    defaults: { _controller: UserBundle:Personal:couponMore }
+
+#### 适用门店
+user_personal_store:
+    path:     /personal/store
+    defaults: { _controller: UserBundle:Personal:store }
+
+#### 期待和意见
+user_personal_feedback:
+    path:     /personal/feedback
+    defaults: { _controller: UserBundle:Personal:feedback }
+
+#### 个人信息
+user_personal_info:
+    path:     /personal/info
+    defaults: { _controller: UserBundle:Personal:info }
+
+#### 个人信息 修改
+user_personal_info_change:
+    path:     /personal/changeInfo
+    defaults: { _controller: UserBundle:Personal:changeInfo }
+
+#### 使用帮助
+user_personal_help:
+    path:     /personal/helpList
+    defaults: { _controller: UserBundle:Personal:helpList }
+
+#### 使用帮助 加载更多
+user_personal_help_more:
+    path:     /personal/helpListMore
+    defaults: { _controller: UserBundle:Personal:helpListMore }
+
+#### 使用帮助 阅读页
+user_personal_help_show:
+    path:     /personal/helpShow/{id}
+    defaults: { _controller: UserBundle:Personal:helpShow }

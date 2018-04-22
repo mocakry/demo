@@ -1,0 +1,385 @@
+.wrap{
+ 	width:100%;
+    max-width: 720px;
+    min-width: 240px;
+    margin: auto;
+}
+/*04消费记录*/
+.consume{
+	padding: 5% 3.3%;	
+}
+.consume-goods{
+	background: #f4f4f8;
+}
+.consume table{
+	width: 100%;
+	text-align: center;
+	line-height: 1.4;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+}
+.consume table tr{
+	border: 1px solid #f4f4f8; 
+}
+.consume table td{
+	padding: 1%;
+	font-family: "微软雅黑"; 
+	border: 1px solid #f4f4f8;
+	word-break:break-all;
+}
+/*05我的积分*/
+.integral{
+	margin-top: 22px;
+	text-align: center;
+	font-family: "微软雅黑";
+	line-height: 1.5;
+}
+.integral-title{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+}
+.digital{
+	font-family: "微软雅黑";
+	font-size: 30px;
+	color: #aac998;
+}
+.upgrade{
+	font-family: "微软雅黑";
+	font-size: 12px;
+	color: #b0b2bc;
+}
+.member{
+	width: 100%;
+	height: 45px;
+	margin-top:14px; 
+	line-height: 45px;
+	background: #f9f9fb;
+}
+.member a{
+	display: block;
+}
+.member span{
+	float: left;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+	line-height: 25px;
+}
+.member-upgrade{
+	float: left;
+	width: 50%;
+	height: 25px;
+	margin: 3% 0;
+	padding: 0 0 0 5.5%; 
+	border-right:1px solid #eaeaea;
+}
+.crown{
+	float: left;
+	width: 18px;
+	height: 17px;
+	margin: 2.5% 4% 0 0;
+	background: url(../images/icon.png) no-repeat -7px -124px;
+	background-size: 155px 180px;
+}
+.upgrade-detail{
+	float: right;
+	width: 7px;
+	height: 10px;
+	margin-top: 5%;
+	margin-right: 8%;
+	background: url(../images/icon.png) no-repeat -142px -128px;
+	background-size: 155px 180px;
+}
+.member-rank{
+	float: left;
+	width: 50%;
+	height: 25px;
+	margin: 3% 0;
+	padding: 0 0 0 2%; 
+}
+.round{
+	float: left;
+	width: 18px;
+	height: 17px;
+	margin: 3% 0 0 0;
+	background: url(../images/icon.png) no-repeat -7px -165px;
+	background-size: 155px 180px;
+}
+.rank-detail{
+	float: right;
+	width: 7px;
+	height: 10px;
+	margin-top: 5%;
+	margin-right: 8%;
+	background: url(../images/icon.png) no-repeat -142px -128px;
+	background-size: 155px 180px;
+}
+.integral-detail{
+	padding: 3%;
+}
+.integral table{
+	width: 100%;
+	font-size: 14px;
+	text-align: center;
+	line-height: 3;
+	color: #333333; 
+}
+.integral table tr{
+	border: 1px solid #f4f4f8; 
+}
+.integral table td{
+	padding-top: 12px;
+	padding-bottom: 12px;
+	line-height: 18px;
+	font-family: "微软雅黑";
+	border: 1px solid #f4f4f8; 
+}
+.integral-lines{
+	background: #f4f4f8;
+}
+/*06会员等级说明*/
+.rank-content{
+	padding: 3% 6%;	
+	line-height: 1.8;
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+}
+.rank-content img {
+	display: block;
+	width: 100%;
+	margin-bottom: 2%;
+}
+.hope-content p{
+	padding: 3%;	
+}
+/*07我的优惠券*/
+.coupons{
+	margin-top: 3%;
+	padding: 0 3.3%;
+	font-family: "微软雅黑";
+	background: #f9f9fb;
+}
+.coupons-title{
+	width: 100%;
+	height: 45px;
+	background: #ffffff;
+}
+.coupons-title a{
+	display: block;
+	float: left;
+	width: 50%;
+	height: 45px;
+	line-height: 45px;
+	text-align: center;
+	font-family: "微软雅黑";
+	font-size: 14px;
+}
+.coupons-detail{
+	width: 100%;
+	height: 80px;
+	margin-bottom: 4%;
+    padding: 3.3%;
+	background: #ffffff;
+}
+.orange{
+	float: left;
+	width: 57px;
+	height: 57px;
+	background: url(../images/icon.png) no-repeat -3px 6px;
+	background-size: 155px 180px;
+	border-right: 1px solid #f1f1f1;
+}
+.effect-content{
+	float: left;
+	width: 63%;
+	height: 56px;
+	margin-left: 5%;
+	line-height: 30px;
+	font-family: "微软雅黑";
+}
+.five{
+	font-size: 24px;
+	color: #aac998;
+}
+.effect{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #999999;
+}
+.code{
+	float: right;
+	width: 28px;
+	height: 28px;
+	margin-right: 1%;
+}
+.change{
+	color:#aac998;
+	border-bottom: 2px solid #aac998;
+}
+/*08优惠券失效*/
+.coupons-detail{
+	position: relative;
+}
+.five-failure{
+	font-size: 24px;
+	color: #999999;
+}
+.used{
+	position: absolute;
+	width: 52px;
+	height: 39px;
+	top: 24%;
+	right: 2%;
+	background: url(../images/icon.png) no-repeat -4px -68px;
+	background-size: 155px 180px;
+}
+.failure{
+	position: absolute;
+	width: 52px;
+	height: 39px;
+	top: 24%;
+	right: 2%;
+	background: url(../images/icon.png) no-repeat -92px -68px;
+	background-size: 155px 180px;
+}
+/*19使用帮助*/
+.use-help{
+	width: 100%;
+	height: 45px;
+	padding: 0 4%;
+	line-height: 45px;
+	border-bottom: 1px solid #f1f1f5;
+}
+.use-help span{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+}
+.use-help a{
+	display: block;
+	width: 100%;
+}
+.link{
+	float: right;
+	width: 6px;
+	height: 11px;
+	margin-top: 6%;
+	background: url(../images/icon.png) no-repeat -142px -128px;
+	background-size: 155px 180px;
+}
+/*21期待和意见*/
+.wrap textarea{
+	display: block;
+	outline: none;
+	resize: none;
+	width: 100%;
+	height: 185px;
+	border: 0px;
+	background: #f9f9fb;
+}
+.wrap textarea:hover{
+	border: 1px solid #aac998;
+}
+.hope-content a{
+	display: block;
+	height: 39px;
+	margin: 12% 3% 0 3%;
+	text-align: center;
+	line-height: 39px;
+	font-size: 16px;
+	border:1px solid #aac998;
+	border-radius: 4px;
+	color: #aac998; 
+}
+.hope-content p{
+	font-family: "微软雅黑";
+	font-size: 14px;
+	color: #333333;
+}
+.hope-text{
+	padding: 3% 0 0 4%;
+	font-size: 14px;
+	font-family: "微软雅黑";
+	color: #333333;	
+}
+
+
+
+/*05会员中心修改*/
+.member-new{
+	width: 100%;
+	height: 50px;
+	margin-top:14px; 
+	line-height: 45px;
+	background: #f9f9fb;
+}
+.member-upgrade-new{
+	float: left;
+	margin-left: 2%;
+	margin-top: 9px;
+	width: 32%;
+	height:31px;
+	border-right:1px solid #eaeaea;
+}
+.member-rank-new{
+	float: left;
+	margin-top: 9px;
+	width: 32%;
+	height:31px;
+	border-right:1px solid #eaeaea;
+}
+.member-shop{
+	float: left;
+	margin-top: 9px;
+	width: 32%;
+	height:31px;
+}
+.crown-new{
+	margin:0 auto;
+	width: 18px;
+	height: 17px;
+	background: url(../images/icon.png) no-repeat -7px -124px;
+	background-size: 155px 180px;
+}
+.round-new{
+	margin:0 auto;
+	width: 18px;
+	height: 17px;
+	background: url(../images/icon.png) no-repeat -7px -165px;
+	background-size: 155px 180px;
+}
+.shop-bg{
+	margin:0 auto;
+	width: 18px;
+	height: 17px;
+	background: url(../images/05-shop-bg.png) no-repeat center;
+	background-size: 15px 15px;
+}
+.member-function{
+	margin-top: 5px;
+	width:100%;
+	height:11px;
+	line-height: 11px;
+	font-size: 12px;
+	color:#393a3f;
+	text-align: center;
+}
+/*根据屏幕宽度不同，设置小图标下字体大小*/
+@media screen and (min-width: 350px){ 
+	.member-function {
+		font-size:12px;
+	} 
+} 
+@media screen and (min-width: 300px) and (max-width: 350px) { 
+	.member-function {
+		font-size:10px;
+	} 
+} 
+@media screen and (max-width: 300px) { 
+	.member-function {
+		font-size:8px;
+	} 
+} 

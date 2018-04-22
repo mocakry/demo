@@ -1,0 +1,103 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    管理员管理{% if id %}编辑{% else %}添加{% endif %}
+{% endblock %}
+
+{% block css %}
+    <style>
+        .about_us {
+            position: static;
+            display: block;
+        }
+        .order-information input[type=text], .order-information select, .order-information input[type=password] {
+            width: 267px;
+            height: 45px;
+            line-height: 40px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content">
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">管理员管理--{% if id %}编辑{% else %}添加{% endif %}</a>
+                </div>
+                <div class="order-information">
+                    <form action="" method="post"  id="form" enctype="multipart/form-data">
+                        <div class="form-group">
+                            <label for="">管理员姓名：</label>
+                            <input type="text" placeholder="请输入管理员姓名" name="account" class="banner-name" value="{% if id %}{{ admin.account }}{% endif %}{{ error.account }}" {% if id %}readonly{% endif %}>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">所属门店：</label>
+                            <select name="storesOwned" id="" {% if id==1 %}disabled{% endif %}>
+                                {% for item in store %}
+                                    <option value="{{ item.id }}">{{ item.name }}</option>
+                                {% endfor %}
+                                <option value="0"{% if id and admin.storesOwned == 0 %}selected{% endif %}>超级管理员</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">登录密码：</label>
+                            <input type="password" name="password" class="password" placeholder="请输入登录密码">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="">确认密码：</label>
+                            <input type="password" name="" class="password-two" placeholder="请再次输入登录密码">
+                        </div>
+                        <span class="tip-error-login about_us">{{ error.content }}</span>
+                        <input type="button" value="保存" class="master_save">
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(function () {
+            // 点击保存 添加
+            $('.master_save').click(function(){
+                var name = $.trim($('.banner-name').val());
+                var password = $.trim($('.password').val());
+                var password_two = $.trim($('.password-two').val());
+                {% if id !=0 %}
+                if (password != '') {
+                    if (password.length < 6) {
+                        alert('密码请设置在6个字符以上！');
+                        return false;
+                    } else if (password != password_two) {
+                        alert('两次密码不一致！');
+                        return false;
+                    }
+                }
+                {% endif %}
+                // 验证 正整数
+                var cell = /^[0-9]*[1-9][0-9]*$/;
+                if (name == '') {
+                    alert("管理员姓名不能为空！");
+                    return false;
+                }
+                {% if id ==0 %}
+                else if (password.length < 6) {
+                    alert('密码请设置在6个字符以上！');
+                    return false;
+                } else if (password != password_two) {
+                    alert('两次密码不一致！');
+                    return false;
+                }
+                {% endif %}
+                else {
+                    $('#form').submit();
+                }
+            })
+        })
+    </script>
+{% endblock %}

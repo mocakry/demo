@@ -1,0 +1,66 @@
+{% extends 'AdminBundle::layout.html.twig' %}
+
+{% block title %}
+    期待与反馈
+{% endblock %}
+
+{% block css %}
+    <style>
+        .console-index {
+            padding: 0;
+            border: 0;
+        }
+        .gradeA td {
+            min-width: 130px;
+        }
+    </style>
+{% endblock %}
+
+{% block content %}
+    <div class="ibox float-e-margins">
+        <div class="ibox-content" >
+            <div class="table-responsive">
+                <div class="current-location">
+                    当前位置：<a href="javascript:;">期待与反馈</a>
+                </div>
+
+                <table class="table table-striped table-bordered table-hover dataTables-example" >
+                    <thead>
+                    <tr>
+                        <th>内容</th>
+                        {#<th>类型</th>#}
+                        <th>时间</th>
+                    </tr>
+                    </thead>
+                    {% for item in feedback %}
+                        <tr class="gradeA">
+                            <td>{{ item.value }}</td>
+                            {#<td>#}
+                                {#{% if item.type == 1 %}#}
+                                    {#用户期待#}
+                                {#{% elseif item.type == 2 %}#}
+                                    {#反馈意见#}
+                                {#{% endif %}#}
+                            {#</td>#}
+                            <td>{{ item.add_date | date('Y-m-d H:i') }}</td>
+                        </tr>
+                    {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+{% endblock %}
+
+{% block js %}
+    <script>
+        $(document).ready(function() {
+            // 删除
+            $('.skill-delete').click(function(){
+                if (confirm('是否删除该banner图？')) {
+                    return true;
+                } return false;
+            })
+        })
+    </script>
+{% endblock %}
