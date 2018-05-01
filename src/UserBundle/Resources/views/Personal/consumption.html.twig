@@ -29,7 +29,6 @@ ajax消费记录api '{{ path('user_personal_consumption_more') }}' get方式 参
     <script>
         $(function () {
             $.get("{{ path('user_personal_consumption_more',{'page':1}) }}",function (data) {
-                console.log(data);
                 if(data.msg.length != 0){
                     var html = "";
                     for(var i = 0 ; i < data.msg.length ; i ++){
