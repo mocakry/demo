@@ -108,7 +108,6 @@ type == 8，参数是mail#}
         $('.avatarsub').click(function () {
             var data = document.getElementById('upload');
             var file = new FormData();
-            //console.log(data);
             file.append('navatar_update', data.files[0]);
             file.append('type', '1');
             $.ajax({
@@ -124,75 +123,81 @@ type == 8，参数是mail#}
         });
         $('.base').click(function(){
             var type = $(this).attr('type');
-            //console.log(type);
+            console.log($(this));
             $('.alert').removeClass('hidden');
             var data = $('.inputform').val();
             switch (type){
                 case '2': {
                     $('.alertitle').html('修改昵称');
+                    /*console.log(type);*/
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(2,'nickname',data);
+                    });
                     break;
-                };
-                case '3': {$('.alertitle').html('修改姓名');break;}
-                case '4': {$('.alertitle').html('修改性别');break;}
-                case '5': {$('.alertitle').html('修改手机号');break;}
-                case '6': {$('.alertitle').html('修改生日');break;}
-                case '7': {$('.alertitle').html('修改QQ号');break;}
-                case '8': {$('.alertitle').html('修改邮箱');break;}
+                }
+                case '3': {
+                    $('.alertitle').html('修改姓名');
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(2,'name',data);
+                    });
+                    break;
+                }
+                case '4': {
+                    $('.alertitle').html('修改性别');
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(4,'sex',data);
+                    });
+                    break;
+                }
+                case '5': {
+                    $('.alertitle').html('修改手机号');
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(5,'phone',data);
+                    });
+                    break;
+                }
+                case '6': {
+                    $('.alertitle').html('修改生日');
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(6,'birthday',data);
+                    });
+                    break;
+                }
+                case '7': {
+                    $('.alertitle').html('修改QQ号');
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(7,'qq',data);
+                    });
+                    break;
+                }
+                case '8': {
+                    $('.alertitle').html('修改邮箱');
+                    $('.ensure').click(function () {
+                        var data = $('.inputform').val();
+                        submit(8,'mail',data);
+                    });
+                    break;
+                }
             }
             $('.cancel').click(function () {
                 $('.alert').addClass('hidden');
             });
-            $('.ensure').click(function () {
-                switch (type){
-                    case '2': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:2,nickname:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                        break;
-                    };
-                    case '3': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:3,name:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                        break;
-                    }
-                    case '4': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:4,sex:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                    }
-                    case '5': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:5,phone:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                         break;
-                    }
-                    case '6': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:6,birthday:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                        break;
-                    }
-                    case '7': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:7,qq:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                        break;
-                    }
-                    case '8': {
-                        $.post("{{ {{path('user_personal_info_change')}} }}",{type:8,mail:data},function (data) {
-                            console.log(data);
-                            $('.alert').addClass('hidden');
-                        });
-                        break;
-                    }
-            });
+            function submit(type,name,data){
+                var send = {};
+                send.type = type;
+                send[name] = data;
+                console.log(type);
+                $.post("{{path('user_personal_info_change') }}",send,function (data) {
+                    console.log(data);
+                    $('.alert').addClass('hidden');
+                });
+            }
         });
     </script>
 {% endblock %}
